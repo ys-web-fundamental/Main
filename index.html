@@ -6,30 +6,131 @@
     <title>Css Study</title>
     <style>
 
-    div {
+   div {
         background-image: url('images/1.jpeg');
-        background-repeat:no-repeat;
+        background-repeat: no-repeat;
+    }
+
+    .marriage table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: white; /* Optional: makes table readable over background */
+    }
+
+    .marriage table td,
+    .marriage table th {
+        border: 1px solid rgb(123, 135, 150);
+        padding: 10px;
+        text-align: left;
+    }
+
+    .marriage table tr:nth-child(odd) {
+        background-color: rgb(192, 219, 219);
+    }
+
+    .marriage table tr:nth-child(even) {
+        background-color: rgb(182, 90, 154);
+        color: white;
     }
     </style>
 
 </head>
 <body>   
-    <div>    
-   <a href="https://www.w3schools.com/" title="This link going to visit education site" target="_blank">
-    <img src="images/1.jpeg" alt="This watch is titan brand" title="this is a image">
-   </a><br/>
-   <p>
-        You can specify background images<br>
-        for any visible HTML element.<br>
-        In this example, the background image<br>
-        is specified for a p element.<br>
-        By default, the background-image<br>
-        will repeat itself in the direction(s)<br>
-        where it is smaller than the element<br>
-        where it is specified. (Try resizing the<br>
-        browser window to see how the<br>
-        background image behaves.
-</p>
+    <div class="bedroom">    
+    <a href="https://www.w3schools.com/" title="This link going to visit education site" target="_blank">
+        <img src="images/1.jpeg" alt="This watch is titan brand" title="this is a image">
+    </a><br/>
+    <p>
+            You can specify background images<br>
+            for any visible HTML element.<br>
+            In this example, the background image<br>
+            is specified for a p element.<br>
+            By default, the background-image<br>
+            will repeat itself in the direction(s)<br>
+            where it is smaller than the element<br>
+            where it is specified. (Try resizing the<br>
+            browser window to see how the<br>
+            background image behaves.
+    </p>
 </div>
+<div class="marriage">
+    <table>
+    <tr>
+        <th> Sr No</th>
+        <th> Student name</th>
+        <th> Email</th>
+        <th> mobile number </th>
+        <th> Address</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Sanket</td>
+        <td>Sanket@bhagat.com</td>
+        <td>9574125896</td>
+        <td>Kharaj</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>pawan</td>
+        <td>Sanket@dhatbale.com</td>
+        <td>9574125896</td>
+        <td>vaijapur</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Tejas</td>
+        <td>Tejas@bhagat.com</td>
+        <td>9574125896</td>
+        <td>Nashik</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Sandip</td>
+        <td>sandip@bhagat.com</td>
+        <td>9574125896</td>
+        <td>Rotegaon</td>
+    </tr>
+    </table>
+</div>
+<div class="education">
+<table>
+<tr>
+    <th> Sr No</th>
+    <th> Student name</th>
+    <th> Email</th>
+    <th> mobile number </th>
+    <th> Address</th>
+</tr>
+<tr>
+    <td>1</td>
+    <td>Sanket</td>
+    <td>Sanket@bhagat.com</td>
+    <td>9574125896</td>
+    <td>Kharaj</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>pawan</td>
+    <td>Sanket@dhatbale.com</td>
+    <td>9574125896</td>
+    <td>vaijapur</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>Tejas</td>
+    <td>Tejas@bhagat.com</td>
+    <td>9574125896</td>
+    <td>Nashik</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>Sandip</td>
+    <td>sandip@bhagat.com</td>
+    <td>9574125896</td>
+    <td>Rotegaon</td>
+</tr>
+</table>
+</div>
+
 </body>
 </html>
