@@ -6,10 +6,7 @@
     <title>Css Study</title>
     <style>
 
-   div {
-        background-image: url('images/1.jpeg');
-        background-repeat: no-repeat;
-    }
+
 
     .marriage table {
         border-collapse: collapse;
@@ -32,11 +29,30 @@
         background-color: rgb(182, 90, 154);
         color: white;
     }
+   #under-list {
+        list-style-type: none;
+        display: flex;
+        gap:10px;
+        font-size: larger;
+    }
+    .first li:nth-child(even){
+        color: aquamarine;
+    }
+      .first li:nth-child(odd){
+        color: blueviolet;
+    }
+
+       .second {
+        list-style-type:square;
+        display: flex;
+        gap:20px;
+        font-size: medium;
+    }
     </style>
 
 </head>
 <body>   
-    <div class="bedroom">    
+    <!-- <div class="bedroom">    
     <a href="https://www.w3schools.com/" title="This link going to visit education site" target="_blank">
         <img src="images/1.jpeg" alt="This watch is titan brand" title="this is a image">
     </a><br/>
@@ -52,8 +68,8 @@
             browser window to see how the<br>
             background image behaves.
     </p>
-</div>
-<div class="marriage">
+</div> -->
+<!-- <div class="marriage">
     <table>
     <tr>
         <th> Sr No</th>
@@ -91,46 +107,63 @@
         <td>Rotegaon</td>
     </tr>
     </table>
-</div>
-<div class="education">
+</div> -->
+<!-- <div class="marriage">
 <table>
 <tr>
     <th> Sr No</th>
-    <th> Student name</th>
-    <th> Email</th>
-    <th> mobile number </th>
-    <th> Address</th>
+    <th> Perticular</th>
+    <th> Price</th>
+    <th>Discount Price</th>
+
 </tr>
 <tr>
     <td>1</td>
-    <td>Sanket</td>
-    <td>Sanket@bhagat.com</td>
-    <td>9574125896</td>
-    <td>Kharaj</td>
+    <td>T-shirt</td>
+    <td>1000</td>
+    <td>699</td>
+
 </tr>
 <tr>
-    <td>2</td>
-    <td>pawan</td>
-    <td>Sanket@dhatbale.com</td>
-    <td>9574125896</td>
-    <td>vaijapur</td>
+   <td>1</td>
+    <td>Shirt</td>
+    <td>700</td>
+    <td>300</td>
 </tr>
 <tr>
     <td>3</td>
-    <td>Tejas</td>
-    <td>Tejas@bhagat.com</td>
-    <td>9574125896</td>
-    <td>Nashik</td>
+    <td>Jens</td>
+    <td>899</td>
+    <td>500</td>
 </tr>
 <tr>
-    <td>4</td>
-    <td>Sandip</td>
-    <td>sandip@bhagat.com</td>
-    <td>9574125896</td>
-    <td>Rotegaon</td>
+    <td colspan="3">Total:</td>
+    <td>2000</td>
 </tr>
 </table>
-</div>
+</div> -->
+
+<ul id="under-list" class="first">
+    <li>Sanket</li>
+    <li>Tushar</li>
+    <li>Sandip</li>
+    <li>Tejas</li>
+    <li>Pawan</li>
+</ul>
+<ul id="under-list" class="second">
+    <li>Sanket</li>
+    <li>Tushar</li>
+    <li>Sandip</li>
+    <li>Tejas</li>
+    <li>Pawan</li>
+</ul>
+<ul class="three first">
+    <li>Sanket</li>
+    <li>Tushar</li>
+    <li>Sandip</li>
+    <li>Tejas</li>
+    <li>Pawan</li>
+</ul>
 
 </body>
 </html>
