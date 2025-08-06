@@ -6,48 +6,6 @@
     <title>Css Study</title>
     <style>
 
-
-
-    .marriage table {
-        border-collapse: collapse;
-        width: 100%;
-        background-color: white; /* Optional: makes table readable over background */
-    }
-
-    .marriage table td,
-    .marriage table th {
-        border: 1px solid rgb(123, 135, 150);
-        padding: 10px;
-        text-align: left;
-    }
-
-    .marriage table tr:nth-child(odd) {
-        background-color: rgb(192, 219, 219);
-    }
-
-    .marriage table tr:nth-child(even) {
-        background-color: rgb(182, 90, 154);
-        color: white;
-    }
-   #under-list {
-        list-style-type: none;
-        display: flex;
-        gap:10px;
-        font-size: larger;
-    }
-    .first li:nth-child(even){
-        color: aquamarine;
-    }
-      .first li:nth-child(odd){
-        color: blueviolet;
-    }
-
-       .second {
-        list-style-type:square;
-        display: flex;
-        gap:20px;
-        font-size: medium;
-    }
     </style>
 
 </head>
@@ -143,7 +101,7 @@
 </table>
 </div> -->
 
-<ul id="under-list" class="first">
+<!-- <ul id="under-list" class="first">
     <li>Sanket</li>
     <li>Tushar</li>
     <li>Sandip</li>
@@ -163,7 +121,42 @@
     <li>Sandip</li>
     <li>Tejas</li>
     <li>Pawan</li>
-</ul>
+</ul> -->
+<form>
+<label> First name : </label>
+<input type="text" name="first_name" placeholder="Pawan">
+<br><br>
+<label> Last name : </label>
+<input type="text" name="last_name" placeholder="Dhatbale">
+<br><br>
+<label> Email : </label>
+<input type="email" name="user_email" placeholder="pawan.Dhatbale@gmail.com">
+<br><br>
+<label> Phone Number : </label>
+<input type="number" name="phone_number" placeholder="9579263798">
+<br><br>
+<label> Gender : </label>
+male :<input type="radio" name="male">
+Female :<input type="radio" name="Female">
+<br><br>
+<label> Select profile Picture : </label>
+<input type="file" name="profile_picture" placeholder="Please upload picture">
+<br><br>
+<label> Which Technology You Like: </label><br>
+html : <input type="checkbox" name="html" value="html"><br>
+Css : <input type="checkbox" name="css" value="css"><br>
+JavaScript :<input type="checkbox" name="js" value="js"><br>
+Node Js: <input type="checkbox" name="nodejs" value="nodejs"><br>
 
+<br><br>
+<label> Address : </label>
+<textarea name="address" rows="8" cols="20">
+
+</textarea>
+<br><br>
+<label> Accept terms & Condition </label>
+<input type="checkbox" name="t&c" value="t&c"><br>
+<input type="submit" name="submit" > <input type="reset" name="Reset" > 
+</form>
 </body>
 </html>
