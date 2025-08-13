@@ -10,153 +10,43 @@
 
 </head>
 <body>   
-    <!-- <div class="bedroom">    
-    <a href="https://www.w3schools.com/" title="This link going to visit education site" target="_blank">
-        <img src="images/1.jpeg" alt="This watch is titan brand" title="this is a image">
-    </a><br/>
-    <p>
-            You can specify background images<br>
-            for any visible HTML element.<br>
-            In this example, the background image<br>
-            is specified for a p element.<br>
-            By default, the background-image<br>
-            will repeat itself in the direction(s)<br>
-            where it is smaller than the element<br>
-            where it is specified. (Try resizing the<br>
-            browser window to see how the<br>
-            background image behaves.
-    </p>
-</div> -->
-<!-- <div class="marriage">
-    <table>
-    <tr>
-        <th> Sr No</th>
-        <th> Student name</th>
-        <th> Email</th>
-        <th> mobile number </th>
-        <th> Address</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Sanket</td>
-        <td>Sanket@bhagat.com</td>
-        <td>9574125896</td>
-        <td>Kharaj</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>pawan</td>
-        <td>Sanket@dhatbale.com</td>
-        <td>9574125896</td>
-        <td>vaijapur</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Tejas</td>
-        <td>Tejas@bhagat.com</td>
-        <td>9574125896</td>
-        <td>Nashik</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Sandip</td>
-        <td>sandip@bhagat.com</td>
-        <td>9574125896</td>
-        <td>Rotegaon</td>
-    </tr>
-    </table>
-</div> -->
-<!-- <div class="marriage">
-<table>
-<tr>
-    <th> Sr No</th>
-    <th> Perticular</th>
-    <th> Price</th>
-    <th>Discount Price</th>
 
-</tr>
-<tr>
-    <td>1</td>
-    <td>T-shirt</td>
-    <td>1000</td>
-    <td>699</td>
+<p class="text-change">Addition!</p> <br>
+<p id="addition"></p><br>
+<p id="varaddition"></p>
 
-</tr>
-<tr>
-   <td>1</td>
-    <td>Shirt</td>
-    <td>700</td>
-    <td>300</td>
-</tr>
-<tr>
-    <td>3</td>
-    <td>Jens</td>
-    <td>899</td>
-    <td>500</td>
-</tr>
-<tr>
-    <td colspan="3">Total:</td>
-    <td>2000</td>
-</tr>
-</table>
-</div> -->
-
-<!-- <ul id="under-list" class="first">
-    <li>Sanket</li>
-    <li>Tushar</li>
-    <li>Sandip</li>
-    <li>Tejas</li>
-    <li>Pawan</li>
-</ul>
-<ul id="under-list" class="second">
-    <li>Sanket</li>
-    <li>Tushar</li>
-    <li>Sandip</li>
-    <li>Tejas</li>
-    <li>Pawan</li>
-</ul>
-<ul class="three first">
-    <li>Sanket</li>
-    <li>Tushar</li>
-    <li>Sandip</li>
-    <li>Tejas</li>
-    <li>Pawan</li>
-</ul> -->
-<form>
-<label> First name : </label>
-<input type="text" name="first_name" placeholder="Pawan">
-<br><br>
-<label> Last name : </label>
-<input type="text" name="last_name" placeholder="Dhatbale">
-<br><br>
-<label> Email : </label>
-<input type="email" name="user_email" placeholder="pawan.Dhatbale@gmail.com">
-<br><br>
-<label> Phone Number : </label>
-<input type="number" name="phone_number" placeholder="9579263798">
-<br><br>
-<label> Gender : </label>
-male :<input type="radio" name="male">
-Female :<input type="radio" name="Female">
-<br><br>
-<label> Select profile Picture : </label>
-<input type="file" name="profile_picture" placeholder="Please upload picture">
-<br><br>
-<label> Which Technology You Like: </label><br>
-html : <input type="checkbox" name="html" value="html"><br>
-Css : <input type="checkbox" name="css" value="css"><br>
-JavaScript :<input type="checkbox" name="js" value="js"><br>
-Node Js: <input type="checkbox" name="nodejs" value="nodejs"><br>
-
-<br><br>
-<label> Address : </label>
-<textarea name="address" rows="8" cols="20">
-
-</textarea>
-<br><br>
-<label> Accept terms & Condition </label>
-<input type="checkbox" name="t&c" value="t&c"><br>
-<input type="submit" name="submit" > <input type="reset" name="Reset" > 
-</form>
+<button type="button" onclick='addition()'>Addition</button>
 </body>
+<script>
+    function addition(){
+        var yenarka = 'no';
+        if(yenarka == 'yes'){
+            let x,y,z;
+                x = 80;
+                y = 500;
+                z = x + y;
+                document.getElementById('addition').innerHTML = z;
+        }
+
+
+        var varaddition = 1;
+        if(varaddition){
+                var a,b,D;
+                a = 55;
+                b = 60;
+                D = a + b;
+                
+        }
+document.getElementById('varaddition').innerHTML = D;
+
+        const  l = 45, m= 78 , n= 0;
+        D = l + m;
+
+
+       // 
+
+        //document.getElementById('addition').innerHTML = n;
+
+    }
+</script>
 </html>
