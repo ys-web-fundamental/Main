@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condition</title>
+</head>
+<body>
+    <h1>Condition</h1>
+        <ul>
+            <li><b>IF</b></li>
+            <li><b>Else</b></li>
+            <li><b>Else If</b></li>
+            <li><b>Switch</b></li>
+        </ul>
+        <div id="road"></div>
+        <div id="Condition"></div>
+</body>
+<script>
+let sanket,sandip, tejas, petrol;
+money = true;
+xyz = false;
+temprature = false;
+jevan = false;
+ghoda = true;
+
+// if(money || (ghoda && jevan && !temprature)) {
+//     document.getElementById("Condition").innerHTML = '1 Yenar';
+// } 
+// if(ghoda) {
+//     document.getElementById("Condition").innerHTML = '2 Yenar';
+// } 
+// if(jevan) {
+//     document.getElementById("Condition").innerHTML = '3 Yenar';
+// } 
+
+
+
+// if(temprature) {
+//     document.getElementById("Condition").innerHTML = '4 Yenar';
+// } 
+//else if(xyz){
+   // document.getElementById("Condition").innerHTML = 'yenar friend';
+//} else {
+    // document.getElementById("Condition").innerHTML = 'nahi yenar';
+//}
+// time =5;
+// alarm = 5;
+
+// if(time == alarm){
+//     document.getElementById("Condition").innerHTML = 'start';
+// } else{
+//     document.getElementById("Condition").innerHTML = 'not start';
+// }
+condition = 'pawan';
+
+switch(condition) {
+
+    case 'sandip':
+         document.getElementById("Condition").innerHTML = 'sandip paise deil';
+         break;
+
+    case 'sanket':
+         document.getElementById("Condition").innerHTML = 'sanket paise deil';
+         break;
+
+    case 'pawan':
+        document.getElementById("road").innerHTML = 'pawan paise deil';
+        break;
+
+    default:
+      document.getElementById("Condition").innerHTML = 'nahi denar';  
+
+}
+
+
+</script>
+</html>
+
