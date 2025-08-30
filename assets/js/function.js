@@ -69,8 +69,48 @@ let student100 = "pawan";
 // console.log(student100);
 
 let students = ["sandip","Tejas","kartik","pawan","vikas","student190","sandip9","Tejas8","kartik7","pawan5","vikasf","student100"];
-var studentName = getStudentNameByRoleNumber(50,students);
+//var studentName = getStudentNameByRoleNumber(50,students);
 
-console.log(studentName);
+console.log(students[0]);
+
+// var person = { 
+//   name:"Vikas",
+//   color: "fair",
+//   age:25,
+//   education: "Diploma",
+//   bike:"Platina",
+//   village : "chikatgaon",
+//   fathername :"Dilip"
+// };
+
+// var fullname =person.name + " " + person.fathername;
+// console.log(fullname);
 
 
+// var sandip ={};
+// sandip.education = "Be Mechanical";
+// sandip.birthday = "1/1";
+// sandip.village = "chikatgaon";
+
+
+// console.log(sandip);
+
+const person = new Object({
+  firstname : "Sanket",
+  lastname: "bhagat"
+});
+
+const person2 = new Object({
+  firstname : "sandip",
+  lastname: "bhagat"
+});
+
+const person3 = new Object({
+  firstname : "vikas",
+  lastname: "bhagat"
+});
+
+
+var studentDetails = [person,person2,person3];
+
+console.log(studentDetails[2].firstname);
