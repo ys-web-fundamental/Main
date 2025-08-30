@@ -110,6 +110,12 @@ const person3 = new Object({
   lastname: "bhagat"
 });
 
+const person4 = new Object({
+  firstname : "vikas",
+  lastname: "bhagat",
+  village: "Chikatgaon"
+});
+
 
 var studentDetails = [person,person2,person3];
 
