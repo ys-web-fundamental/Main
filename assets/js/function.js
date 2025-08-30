@@ -116,6 +116,12 @@ const person4 = new Object({
   village: "Chikatgaon"
 });
 
+const person5 = new Object({
+  firstname : "vikas",
+  lastname: "bhagat",
+  village: "Chikatgaon"
+});
+
 
 var studentDetails = [person,person2,person3];
 
