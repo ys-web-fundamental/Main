@@ -1,21 +1,69 @@
 "use strict";
-// Strict Mode class on 25/08/2025
-// var sanket = 'I have money';
-// var spent = false;
-// if(spent) {
-//     sanket = 'I dont have money';
+
+const student1 = new Object({
+  firstname : "Sanket",
+  lastname: "bhagat",
+  class: "first Year",
+  age : 22,
+  gender : "male",
+  color : "fair",
+  address : "chikatgaon1",
+  email : "sanket@gmail.com",
+  mobilenumber : "9578452365"
+
+});
+
+const student2 = new Object({
+firstname : "sandip",
+  lastname: "bhagat",
+  class: "first Year first sem",
+  age : 21,
+  gender : "male",
+  color : "black",
+  address : "chikatgaon2",
+  email : "sandip@gmail.com",
+  mobilenumber : "95775421369"
+});
+
+const student3 = new Object({
+  firstname : "vikas",
+  lastname: "bhagat",
+  class: "first Year first sem",
+  age : 21,
+  gender : "male",
+  color : "black",
+  address : "chikatgaon3",
+  email : "sandip@gmail.com",
+  mobilenumber : "95775421369"
+});
+
+const student4 = new Object({
+  firstname : "Tejas",
+  lastname: "bhagat",
+ class: "BE first year",
+  age : 23,
+  gender : "male",
+  color : "fair",
+  address : "chikatgaon4",
+  email : "tejas@gmail.com",
+  mobilenumber : "7452189635"
+});
+
+
+var studentDetails = [student1,student2,student3, student4];
+// studentDetails.forEach(studentdetials);
+
+// function studentdetials(iteam,index){
+//     var name  = iteam;
+//     console.log(name);
 // }
 
-// console.log(sanket);
-
-function fruitprocessor(apples, oranges){
-
-   // console.log(apples, oranges);
-    const juice = `juice with ${apples} apples and ${oranges} oranges`;
-    return juice;
+for( var i= 0; i< studentDetails.length; i++){
+   var studentName =  studentDetails[i].firstname;
+   var studentaddress =  studentDetails[i].address;
+  // console.log(i);
+   console.log(studentName);
+   //console.log(studentaddress);
 }
 
-var juice = fruitprocessor(10,50);
-//console.log(juice);
-var juiceapple = fruitprocessor(10,0);
-//console.log(juiceapple);
+
