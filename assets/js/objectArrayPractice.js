@@ -33,7 +33,7 @@ const student3 = new Object({
   gender : "male",
   color : "black",
   address : "chikatgaon3",
-  email : "sandip@gmail.com",
+  email : "pawan@gmail.com",
   mobilenumber : "95775421369"
 });
 
@@ -58,12 +58,24 @@ var studentDetails = [student1,student2,student3, student4];
 //     console.log(name);
 // }
 
-for( var i= 0; i< studentDetails.length; i++){
-   var studentName =  studentDetails[i].firstname;
-   var studentaddress =  studentDetails[i].address;
-  // console.log(i);
-   console.log(studentName);
-   //console.log(studentaddress);
-}
+// for( var i= 0; i< studentDetails.length; i++){
+//     if(i==1){
+//         break; // exit the iteration
+//     }
+//    var studentName =  studentDetails[i].firstname;
+//    var studentaddress =  studentDetails[i].address;
+//   // console.log(i);
+//    console.log(studentName);
+//    //console.log(studentaddress);
+// }
 
+
+for(var index=0; index < studentDetails.length; index++){
+
+    if(studentDetails[index].email == 'sandip@gmail.com'){
+        console.log(studentDetails[index].email);
+        break;
+    }
+
+}
 
