@@ -51,12 +51,18 @@ const student4 = new Object({
 
 
 var studentDetails = [student1,student2,student3, student4];
-// studentDetails.forEach(studentdetials);
+studentDetails.forEach(studentdetials);
 
-// function studentdetials(iteam,index){
-//     var name  = iteam;
-//     console.log(name);
-// }
+function studentdetials(iteam,index){
+
+    if(iteam.firstname == 'sandip'){
+        console.log(iteam.firstname);
+        return true;
+        
+    }
+    return false;
+    
+}
 
 // for( var i= 0; i< studentDetails.length; i++){
 //     if(i==1){
