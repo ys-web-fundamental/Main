@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb Demo - TechYogi Learning Hub</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+</head>
+<body>
+    <!-- Watermark Container -->
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="demo-nav">
+        <div class="nav-container">
+            <h1>TechYogi Learning Hub</h1>
+            <marquee style="background: var(--accent); padding: 8px 16px; border-radius: 8px; color: var(--text); font-weight: 500;">
+                Welcome to TechYogi Learning Notes prepared by Yogesh Suryawanshi
+            </marquee>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Demos</a>
+        
+        <div class="demo-box">
+            <h2>Interactive Bulb Demo</h2>
+            <p>Click the buttons to control the bulb state</p>
+            
+            <div class="bulb"></div>
+            
+            <div class="controls">
+                <button onclick="turnOn()" class="btn">Turn On</button>
+                <button onclick="turnOff()" class="btn secondary">Turn Off</button>
+            </div>
+            
+            <p class="hint">Click buttons to toggle the bulb state</p>
+        </div>
+
+        <div class="credit">
+            <div class="credit-info">
+                <span class="credit-name">© 2025 Yogesh Suryawanshi</span>
+                <span class="credit-contact">All rights reserved</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/auth.js"></script>
+    <script>
+        function turnOn() {
+            document.querySelector('.bulb').classList.add('on');
+        }
+        
+        function turnOff() {
+            document.querySelector('.bulb').classList.remove('on');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables Demo - let, var, const</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <script src="../../assets/js/auth.js"></script>
+    <style>
+        /* Base Layout */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Fixed Header */
+        .demo-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel);
+            box-shadow: 0 2px 8px rgba(15,23,36,0.08);
+            z-index: 100;
+            height: 64px; /* Slightly taller header */
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(15,23,36,0.04);
+        }
+        .nav-container {
+            max-width: 900px; /* Wider container */
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .demo-tabs {
+            display: flex;
+            gap: 12px;
+        }
+        .demo-tab {
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .demo-tab.active {
+            background: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(255,213,74,0.2);
+        }
+        .demo-tab:hover:not(.active) {
+            background: rgba(255,213,74,0.1);
+        }
+
+        /* Main Content Area */
+        .container {
+            flex: 1;
+            max-width: 900px; /* Matching header width */
+            margin: 0 auto;
+            padding: 84px 24px 24px; /* Increased padding */
+            overflow-y: auto;
+            position: relative;
+            height: calc(100vh - 64px);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+        .container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .container::-webkit-scrollbar-thumb {
+            background-color: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Demo Boxes */
+        .demo-box {
+            background: var(--panel);
+            border-radius: 12px; /* Larger radius */
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(15,23,36,0.06);
+            border: 1px solid rgba(15,23,36,0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .demo-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(15,23,36,0.08);
+        }
+        
+        /* Marathi Examples */
+        .marathi-examples {
+            background: linear-gradient(to right bottom, #f8fafc, #f1f5f9);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid rgba(15,23,36,0.04);
+        }
+        .marathi-examples h3 {
+            color: var(--text);
+            margin: 20px 0 12px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .marathi-examples h3::before {
+            content: "🔹";
+            font-size: 1.2em;
+        }
+        .marathi-examples p {
+            color: var(--muted);
+            margin: 8px 0 16px;
+            line-height: 1.6;
+        }
+        
+        /* Navigation Elements */
+        .back-to-demos {
+            color: var(--muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-to-demos:hover {
+            color: var(--text);
+        }
+        
+        /* Credit Line */
+        .credit {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel);
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 -2px 8px rgba(15,23,36,0.04);
+        }
+        .demo-box {
+            background: var(--panel);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .code {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            margin: 16px 0;
+            white-space: pre-wrap;
+            border: 1px solid rgba(15,23,36,0.04);
+            font-size: 14px;
+            line-height: 1.5;
+            box-shadow: inset 0 1px 4px rgba(15,23,36,0.04);
+        }
+        .result {
+            color: var(--accent);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(255,213,74,0.1);
+            display: inline-block;
+            margin: 8px 0;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .back-link:hover {
+            color: var(--text);
+            transform: translateX(-2px);
+        }
+        button {
+            background: var(--accent);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 8px 0;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: var(--text);
+        }
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(255,213,74,0.2);
+            filter: brightness(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <nav class="demo-nav">
+        <div class="nav-container">
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="showSection('examples')">Examples</button>
+                <button class="demo-tab" onclick="showSection('marathi')">मराठी उदाहरणे</button>
+                <button class="demo-tab" onclick="showSection('exercise')">Exercise</button>
+            </div>
+            <a href="../index.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
+                </svg>
+                Back to Menu
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Understanding Variables</h1>
+        <p>Learn the differences between let, var, and const with simple examples.</p>
+
+        <!-- Regular Examples Section -->
+        <div id="examples" class="content-section active">
+            <div class="demo-box">
+                <h2>Variable Examples</h2>
+            
+            <div class="marathi-examples">
+                <h3>1. let चे उदाहरण:</h3>
+                <p>समजा तुमच्या खिशात पैसे आहेत (बदलणारी रक्कम):</p>
+                <div class="code">let खिशातलेPaise = 100;
+// जर दुकानात खर्च केले
+खिशातलेPaise = खिशातलेPaise - 20;
+// आता खिशात 80 रुपये</div>
+
+                <h3>2. const चे उदाहरण:</h3>
+                <p>तुमचा मोबाईल नंबर (कायम राहणारा):</p>
+                <div class="code">const मोबाईलNumb = "9876543210";
+// हा नंबर बदलू शकत नाही</div>
+
+                <h3>3. var चे उदाहरण:</h3>
+                <p>दिवसभरातील तापमान (सतत बदलणारे):</p>
+                <div class="code">var तापमान = 25;
+// दुपारी बदलले
+तापमान = 32;
+// संध्याकाळी बदलले
+तापमान = 28;</div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>1. Let - Block Scoped Variables</h2>
+            <div class="code">let count = 1;
+count = count + 1; // We can change let variables
+console.log(count); // Shows 2</div>
+            <button onclick="demoLet()">Try let Demo</button>
+            <p>Result: <span id="letResult" class="result">Click to see!</span></p>
+            
+            <div class="marathi-example">
+                <h3>मराठी उदाहरण:</h3>
+                <div class="code">// समजा आपल्याला एका विद्यार्थ्याचे गुण बदलायचे आहेत
+let गुण = 75;
+गुण = गुण + 5;  // बोनस गुण जोडले
+console.log(गुण); // आता 80 दाखवेल
+
+// let मध्ये आपण व्हॅल्यू बदलू शकतो
+// जसे विद्यार्थ्याचे गुण वाढवणे किंवा कमी करणे</div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. Const - Constants</h2>
+            <div class="code">const PI = 3.14159;
+// PI = 3; // This would cause an error!
+console.log(PI);</div>
+            <button onclick="demoConst()">Try const Demo</button>
+            <p>Result: <span id="constResult" class="result">Click to see!</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. Var - Function Scoped</h2>
+            <div class="code">var name = "Alice";
+name = "Bob"; // We can change var variables
+console.log(name);</div>
+            <button onclick="demoVar()">Try var Demo</button>
+            <p>Result: <span id="varResult" class="result">Click to see!</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. Scope Example</h2>
+            <div class="code">let outside = "I'm outside!";
+{
+    let inside = "I'm inside!";
+    console.log(inside); // Works
+}
+// console.log(inside); // Would cause error - inside is not defined</div>
+            <button onclick="demoScope()">Try Scope Demo</button>
+            <p>Result: <span id="scopeResult" class="result">Click to see!</span></p>
+        </div>
+
+        </div>
+
+        <!-- Marathi Examples Section -->
+        <div id="marathi" class="content-section">
+            <div class="demo-box">
+                <h2>रोजच्या जीवनातील उदाहरणे (Real Life Examples in Marathi)</h2>
+                
+                <div class="marathi-examples">
+                    <h3>1. let चे उदाहरण - पैशांची बॅग:</h3>
+                    <p>जसे आपल्या पैशांच्या बॅगेत पैसे कमी-जास्त होतात:</p>
+                    <div class="code">let पैशांचीबॅग = 500;
+// जेवण खाल्ल्यावर
+पैशांचीबॅग = पैशांचीबॅग - 100;
+// आईने पैसे दिले
+पैशांचीबॅग = पैशांचीबॅग + 200;</div>
+
+                    <h3>2. const चे उदाहरण - आधार कार्ड नंबर:</h3>
+                    <p>जो कधीही बदलत नाही:</p>
+                    <div class="code">const आधारक्रमांक = "1234-5678-9012";
+// हा नंबर कधीच बदलू शकत नाही</div>
+
+                    <h3>3. var चे उदाहरण - वर्गातील विद्यार्थी:</h3>
+                    <p>जे नेहमी बदलत राहतात:</p>
+                    <div class="code">var उपस्थितविद्यार्थी = 45;
+// सकाळी गणना
+उपस्थितविद्यार्थी = 43;
+// दुपारी गणना
+उपस्थितविद्यार्थी = 44;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Section -->
+        <div id="exercise" class="content-section">
+            <div class="demo-box">
+                <h2>Practice Exercises</h2>
+                
+                <div class="exercise-box">
+                    <h3>Exercise 1: School Records</h3>
+                    <p>Create variables for storing student information:</p>
+                    <ul>
+                        <li>Use const for student ID (cannot change)</li>
+                        <li>Use let for student grades (can change)</li>
+                        <li>Use var for total students in class (old style)</li>
+                    </ul>
+                    <div class="code">// Write your solution here:
+const studentId = "ST001";  // Cannot be changed
+let mathGrade = 85;         // Can be updated
+var totalStudents = 30;     // Old style variable
+
+// Try changing the values:
+mathGrade = 90;             // This works
+totalStudents = 31;         // This works
+// studentId = "ST002";     // This would cause error!</div>
+                </div>
+
+                <div class="exercise-box">
+                    <h3>Exercise 2: Shopping Cart</h3>
+                    <p>Create variables for a shopping cart:</p>
+                    <ul>
+                        <li>Use const for shop name</li>
+                        <li>Use let for cart total (changes with items)</li>
+                        <li>Use let for number of items</li>
+                    </ul>
+                    <div class="code">// Your solution here:
+const shopName = "Super Market";
+let cartTotal = 0;
+let itemCount = 0;
+
+// Add items:
+itemCount = itemCount + 1;  // Add one item
+cartTotal = cartTotal + 50; // Add item price</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="credit" style="text-align: center; margin-top: 40px; color: var(--muted);">
+        Design and developed by Yogesh Suryawanshi
+    </p>
+
+    <script>
+        // Tab switching functionality
+        function showSection(sectionId) {
+            // Update tab buttons
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            const activeTab = document.querySelector(`.demo-tab[onclick*="${sectionId}"]`);
+            if (activeTab) activeTab.classList.add('active');
+
+            // Update content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) activeSection.classList.add('active');
+        }
+
+        // Demo functions that show how each type of variable works
+        function demoLet() {
+            let count = 1;
+            count = count + 1;
+            document.getElementById('letResult').textContent = `count is now ${count}`;
+        }
+
+        function demoConst() {
+            const PI = 3.14159;
+            try {
+                // PI = 3; // This would cause an error
+                document.getElementById('constResult').textContent = 
+                    `PI is ${PI} and cannot be changed!`;
+            } catch(e) {
+                document.getElementById('constResult').textContent = 
+                    "Error: Can't change a const!";
+            }
+        }
+
+        function demoVar() {
+            var name = "Alice";
+            name = "Bob";
+            document.getElementById('varResult').textContent = 
+                `name changed to ${name}`;
+        }
+
+        function demoScope() {
+            let outside = "I'm outside!";
+            {
+                let inside = "I'm inside!";
+                document.getElementById('scopeResult').textContent = 
+                    `Inside block: ${inside}, Outside block: ${outside}`;
+            }
+            // This would cause error: console.log(inside)
+        }
+    </script>
+</body>
+</html>

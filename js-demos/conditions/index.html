@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If-Else Conditions Demo</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <script src="../../assets/js/auth.js"></script>
+    <style>
+        /* Custom styles specific to conditions demo */
+        input[type="number"] {
+            width: 80px;
+        }
+        #weekendStatus {
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(15,23,36,0.05);
+            border-radius: 4px;
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <nav class="demo-nav">
+        <div class="nav-container">
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="showTab('demo')">Demo</button>
+                <button class="demo-tab" onclick="showTab('code')">Code</button>
+                <button class="demo-tab" onclick="showTab('exercise')">Exercise</button>
+            </div>
+            <a href="../index.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
+                </svg>
+                Back to Menu
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="demo" class="tab-content active">
+            <h1>If-Else Conditions</h1>
+            <p>Learn how to make decisions in your code using if, else if, and else statements.</p>
+
+        <div class="demo-box">
+            <h2>रोजच्या जीवनातील उदाहरणे (Real Life Examples in Marathi)</h2>
+            
+            <div class="marathi-examples">
+                <h3>1. पाऊस पडत आहे का? (Simple If)</h3>
+                <div class="code">let पावसाचीशक्यता = true;
+
+if (पावसाचीशक्यता) {
+    console.log("छत्री घ्या! ☔");
+}</div>
+
+                <h3>2. परीक्षेत किती गुण मिळाले? (If-Else)</h3>
+                <div class="code">let गुण = 75;
+
+if (गुण >= 35) {
+    console.log("तुम्ही पास झालात! 🎉");
+} else {
+    console.log("पुन्हा प्रयत्न करा 📚");
+}</div>
+
+                <h3>3. दुकानात काय खरेदी करायचे? (If-Else If)</h3>
+                <div class="code">let खिशातलेPaise = 50;
+
+if (खिशातलेPaise >= 100) {
+    console.log("वडापाव खाऊ 🥪");
+} else if (खिशातलेPaise >= 50) {
+    console.log("चहा आणि बिस्किट घेऊ ☕");
+} else {
+    console.log("फक्त चहा घेऊ ☕");
+}</div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>1. Simple If Statement</h2>
+            <div class="code">let age = 18;
+if (age >= 18) {
+    console.log("You can vote!");
+}</div>
+            <input type="number" id="ageInput" value="18" min="1" max="100">
+            <button onclick="checkAge()">Check Age</button>
+            <p>Result: <span id="ageResult" class="result">Enter age and click</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. If-Else Statement</h2>
+            <div class="code">let number = 7;
+if (number % 2 === 0) {
+    console.log("Number is even");
+} else {
+    console.log("Number is odd");
+}</div>
+            <input type="number" id="numberInput" value="7">
+            <button onclick="checkEvenOdd()">Check Even/Odd</button>
+            <p>Result: <span id="evenOddResult" class="result">Enter number and click</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. If-Else If-Else</h2>
+            <div class="code">let score = 85;
+if (score >= 90) {
+    console.log("Grade: A");
+} else if (score >= 80) {
+    console.log("Grade: B");
+} else if (score >= 70) {
+    console.log("Grade: C");
+} else {
+    console.log("Grade: F");
+}</div>
+            <input type="number" id="scoreInput" value="85" min="0" max="100">
+            <button onclick="checkGrade()">Check Grade</button>
+            <p>Result: <span id="gradeResult" class="result">Enter score and click</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. Multiple Conditions</h2>
+            <div class="code">let hour = 14;
+let isWeekend = true;
+
+if (hour < 10) {
+    console.log("Good morning!");
+} else if (hour < 18 && !isWeekend) {
+    console.log("Good day at work!");
+} else if (hour < 18 && isWeekend) {
+    console.log("Enjoy your weekend!");
+} else {
+    console.log("Good evening!");
+}</div>
+            <input type="number" id="hourInput" value="14" min="0" max="23">
+            <button onclick="toggleWeekend()">Toggle Weekend</button>
+            <button onclick="checkGreeting()">Check Greeting</button>
+            <p>Current: <span id="weekendStatus">Weekend: Yes</span></p>
+            <p>Result: <span id="greetingResult" class="result">Set time and click</span></p>
+        </div>
+
+        </div>
+
+        <div id="code" class="tab-content">
+            <h1>Conditional Statements Syntax</h1>
+            <div class="demo-box">
+                <h2>Basic If Statement</h2>
+                <div class="code">if (condition) {
+    // code to execute if condition is true
+}
+
+// Example:
+if (age >= 18) {
+    console.log("You are an adult");
+}</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>If-Else Statement</h2>
+                <div class="code">if (condition) {
+    // code to execute if condition is true
+} else {
+    // code to execute if condition is false
+}
+
+// Example:
+if (temperature > 30) {
+    console.log("It's hot!");
+} else {
+    console.log("It's not too hot.");
+}</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>If-Else If-Else Statement</h2>
+                <div class="code">if (condition1) {
+    // code for condition1
+} else if (condition2) {
+    // code for condition2
+} else if (condition3) {
+    // code for condition3
+} else {
+    // code if no condition is true
+}
+
+// Example:
+if (score >= 90) {
+    console.log("Grade A");
+} else if (score >= 80) {
+    console.log("Grade B");
+} else {
+    console.log("Try harder");</div>
+            </div>
+        </div>
+
+        <div id="exercise" class="tab-content">
+            <h1>Practice Exercises</h1>
+            
+            <div class="demo-box">
+                <h2>Exercise 1: Age Categories</h2>
+                <p>Write code that categorizes age into different groups:</p>
+                <ul>
+                    <li>0-12: Child</li>
+                    <li>13-19: Teenager</li>
+                    <li>20-59: Adult</li>
+                    <li>60+: Senior</li>
+                </ul>
+                <div class="code">// Your solution here
+let age = 25;
+
+if (age >= 0 && age <= 12) {
+    console.log("Child");
+} else if (age >= 13 && age <= 19) {
+    console.log("Teenager");
+} else if (age >= 20 && age <= 59) {
+    console.log("Adult");
+} else {
+    console.log("Senior");
+}</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Exercise 2: Movie Ticket Price</h2>
+                <p>Calculate ticket price based on:</p>
+                <ul>
+                    <li>Age (children & seniors get discount)</li>
+                    <li>Day of week (weekends cost more)</li>
+                    <li>Time of day (matinee is cheaper)</li>
+                </ul>
+                <div class="code">// Your solution here
+let age = 25;
+let isWeekend = true;
+let isMatinee = false;
+let price = 10; // Base price
+
+if (age < 13 || age >= 60) {
+    price = price * 0.8; // 20% discount
+}
+
+if (isWeekend) {
+    price = price * 1.2; // 20% weekend markup
+}
+
+if (isMatinee) {
+    price = price * 0.7; // 30% matinee discount
+}
+
+console.log(`Ticket price: $${price.toFixed(2)}`);</div>
+            </div>
+        </div>
+
+        <div class="credit">
+            <div class="credit-info">
+                <span class="credit-name">Design and developed by Yogesh Suryawanshi</span>
+                <a href="tel:+919579263798" class="credit-contact">📞 +91 957 926 3798</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content and activate the tab
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelector(`.demo-tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        // Original script content below
+        // Simple if demo
+        function checkAge() {
+            let age = parseInt(document.getElementById('ageInput').value);
+            if (age >= 18) {
+                document.getElementById('ageResult').textContent = "You can vote! ✓";
+            } else {
+                document.getElementById('ageResult').textContent = "Too young to vote ✗";
+            }
+        }
+
+        // If-else demo
+        function checkEvenOdd() {
+            let number = parseInt(document.getElementById('numberInput').value);
+            if (number % 2 === 0) {
+                document.getElementById('evenOddResult').textContent = `${number} is even`;
+            } else {
+                document.getElementById('evenOddResult').textContent = `${number} is odd`;
+            }
+        }
+
+        // If-else if-else demo
+        function checkGrade() {
+            let score = parseInt(document.getElementById('scoreInput').value);
+            let grade;
+            if (score >= 90) {
+                grade = "A";
+            } else if (score >= 80) {
+                grade = "B";
+            } else if (score >= 70) {
+                grade = "C";
+            } else {
+                grade = "F";
+            }
+            document.getElementById('gradeResult').textContent = 
+                `Score ${score} gets grade: ${grade}`;
+        }
+
+        // Multiple conditions demo
+        let isWeekend = true;
+        function toggleWeekend() {
+            isWeekend = !isWeekend;
+            document.getElementById('weekendStatus').textContent = 
+                `Weekend: ${isWeekend ? 'Yes' : 'No'}`;
+            checkGreeting();
+        }
+
+        function checkGreeting() {
+            let hour = parseInt(document.getElementById('hourInput').value);
+            let greeting;
+            
+            if (hour < 10) {
+                greeting = "Good morning!";
+            } else if (hour < 18 && !isWeekend) {
+                greeting = "Good day at work!";
+            } else if (hour < 18 && isWeekend) {
+                greeting = "Enjoy your weekend!";
+            } else {
+                greeting = "Good evening!";
+            }
+            
+            document.getElementById('greetingResult').textContent = greeting;
+        }
+    </script>
+</body>
+</html>

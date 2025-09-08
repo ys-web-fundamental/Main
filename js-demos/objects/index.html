@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects Demo</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <script src="../../assets/js/auth.js"></script>
+    <style>
+        /* Custom styles specific to objects demo */
+        .output-box {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            min-height: 40px;
+            border: 1px solid rgba(15,23,36,0.04);
+        }
+        .property {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--accent);
+            color: var(--text);
+            border-radius: 6px;
+            margin: 3px;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+        .property:hover {
+            transform: translateY(-2px);
+        }
+        .playground {
+            margin: 16px 0;
+            padding: 16px;
+            background: rgba(15,23,36,0.02);
+            border-radius: 8px;
+            border: 1px solid rgba(15,23,36,0.04);
+        }
+        input {
+            width: 120px;
+        }
+        select {
+            min-width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <nav class="demo-nav">
+        <div class="nav-container">
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="showTab('demo')">Demo</button>
+                <button class="demo-tab" onclick="showTab('code')">Code</button>
+                <button class="demo-tab" onclick="showTab('exercise')">Exercise</button>
+            </div>
+            <a href="../index.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
+                </svg>
+                Back to Menu
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="demo" class="tab-content active">
+            <h1>Working with Objects</h1>
+            <p>Learn how to create and work with JavaScript objects through these simple examples.</p>
+
+        <div class="demo-box">
+            <h2>1. Basic Object Creation</h2>
+            <div class="code">// Create a simple object
+let person = {
+    name: "John",
+    age: 25,
+    city: "New York"
+};</div>
+            
+            <div class="playground">
+                <input type="text" id="nameInput" placeholder="Name">
+                <input type="number" id="ageInput" placeholder="Age">
+                <input type="text" id="cityInput" placeholder="City">
+                <button onclick="createPerson()">Create Person</button>
+                <div id="personResult" class="output-box"></div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. Object Methods</h2>
+            <div class="code">// Object with methods
+let calculator = {
+    add: function(a, b) { return a + b; },
+    subtract: function(a, b) { return a - b; }
+};</div>
+            
+            <div class="playground">
+                <input type="number" id="num1" placeholder="First number" value="5">
+                <input type="number" id="num2" placeholder="Second number" value="3">
+                <button onclick="calculate('add')">Add</button>
+                <button onclick="calculate('subtract')">Subtract</button>
+                <button onclick="calculate('multiply')">Multiply</button>
+                <div id="calculatorResult" class="output-box"></div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. Object Properties</h2>
+            <div class="code">// Access and modify properties
+let car = {
+    brand: "Toyota",
+    model: "Camry",
+    year: 2023
+};
+console.log(car.brand);    // Using dot notation
+console.log(car["model"]); // Using bracket notation</div>
+            
+            <div class="playground">
+                <div id="carDisplay" class="output-box"></div>
+                <input type="text" id="propertyInput" placeholder="Property name">
+                <input type="text" id="valueInput" placeholder="New value">
+                <button onclick="updateProperty()">Update Property</button>
+                <button onclick="showProperties()">Show All Properties</button>
+                <div id="propertyResult" class="output-box"></div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. Nested Objects</h2>
+            <div class="code">// Object containing objects
+let school = {
+    name: "High School",
+    classes: {
+        math: { teacher: "Mrs. Smith", students: 25 },
+        science: { teacher: "Mr. Jones", students: 30 }
+    }
+};</div>
+            
+            <div class="playground">
+                <div id="schoolDisplay" class="output-box"></div>
+                <select id="classSelect">
+                    <option value="math">Math Class</option>
+                    <option value="science">Science Class</option>
+                    <option value="english">English Class</option>
+                </select>
+                <input type="text" id="teacherInput" placeholder="Teacher name">
+                <input type="number" id="studentsInput" placeholder="Students">
+                <button onclick="updateClass()">Update Class</button>
+                <div id="classResult" class="output-box"></div>
+            </div>
+        </div>
+
+        </div>
+
+        <div id="code" class="tab-content">
+            <h1>Object Syntax and Methods</h1>
+            
+            <div class="demo-box">
+                <h2>Object Creation</h2>
+                <div class="code">// Object Literal Notation
+let person = {
+    name: "John",
+    age: 30,
+    city: "New York"
+};
+
+// Using Object Constructor
+let car = new Object();
+car.brand = "Toyota";
+car.model = "Camry";
+
+// Object with Methods
+let calculator = {
+    add: function(a, b) {
+        return a + b;
+    },
+    // Shorthand method syntax
+    subtract(a, b) {
+        return a - b;
+    }
+};</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Accessing Properties</h2>
+                <div class="code">// Dot Notation
+console.log(person.name);
+
+// Bracket Notation
+console.log(person["age"]);
+
+// Dynamic Property Access
+let propertyName = "city";
+console.log(person[propertyName]);
+
+// Object Methods
+Object.keys(person);    // Get all keys
+Object.values(person);  // Get all values
+Object.entries(person); // Get key-value pairs</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Advanced Object Concepts</h2>
+                <div class="code">// Object Destructuring
+let { name, age } = person;
+
+// Spread Operator
+let clone = { ...person };
+
+// Object.defineProperty
+Object.defineProperty(person, 'id', {
+    value: 1,
+    writable: false,
+    enumerable: true
+});
+
+// Computed Properties
+let prefix = "user";
+let user = {
+    [`${prefix}_id`]: 1,
+    [`${prefix}_name`]: "John"
+};</div>
+            </div>
+        </div>
+
+        <div id="exercise" class="tab-content">
+            <h1>Practice Exercises</h1>
+            
+            <div class="demo-box">
+                <h2>Exercise 1: Student Management</h2>
+                <p>Create an object to manage student information:</p>
+                <ul>
+                    <li>Store student details (name, age, grades)</li>
+                    <li>Add methods to calculate average grade</li>
+                    <li>Add method to display student info</li>
+                </ul>
+                <div class="code">// Your solution here
+let student = {
+    name: "John Smith",
+    age: 20,
+    grades: [85, 90, 92, 88, 87],
+    
+    calculateAverage() {
+        let sum = this.grades.reduce((a, b) => a + b, 0);
+        return sum / this.grades.length;
+    },
+    
+    displayInfo() {
+        return `${this.name}, age ${this.age}
+Average Grade: ${this.calculateAverage()}`;
+    }
+};</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Exercise 2: Product Catalog</h2>
+                <p>Create a nested object structure for a product catalog:</p>
+                <ul>
+                    <li>Categories with products</li>
+                    <li>Product details (name, price, stock)</li>
+                    <li>Methods to update stock and price</li>
+                </ul>
+                <div class="code">// Your solution here
+let catalog = {
+    electronics: {
+        products: [
+            { id: 1, name: "Laptop", price: 999, stock: 5 },
+            { id: 2, name: "Phone", price: 699, stock: 10 }
+        ],
+        updateStock(id, newStock) {
+            let product = this.products.find(p => p.id === id);
+            if (product) product.stock = newStock;
+        },
+        updatePrice(id, newPrice) {
+            let product = this.products.find(p => p.id === id);
+            if (product) product.price = newPrice;
+        }
+    }
+};</div>
+            </div>
+        </div>
+
+        <div class="credit">
+            <div class="credit-info">
+                <span class="credit-name">Design and developed by Yogesh Suryawanshi</span>
+                <a href="tel:+919579263798" class="credit-contact">📞 +91 957 926 3798</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content and activate the tab
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelector(`.demo-tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        // Original script content below
+        // Basic object demo
+        function createPerson() {
+            const person = {
+                name: document.getElementById('nameInput').value || 'John',
+                age: parseInt(document.getElementById('ageInput').value) || 25,
+                city: document.getElementById('cityInput').value || 'New York',
+                introduce: function() {
+                    return `Hi, I'm ${this.name}, ${this.age} years old from ${this.city}`;
+                }
+            };
+            
+            document.getElementById('personResult').innerHTML = 
+                `<div class="property">${person.introduce()}</div>`;
+        }
+
+        // Calculator object demo
+        const calculator = {
+            add: (a, b) => a + b,
+            subtract: (a, b) => a - b,
+            multiply: (a, b) => a * b
+        };
+
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+            
+            if (operation in calculator) {
+                result = calculator[operation](num1, num2);
+                document.getElementById('calculatorResult').innerHTML = 
+                    `<div class="property">${num1} ${operation} ${num2} = ${result}</div>`;
+            }
+        }
+
+        // Car object demo
+        let car = {
+            brand: "Toyota 🚗",
+            model: "Camry",
+            year: 2023,
+            color: "Blue"
+        };
+
+        function updateCarDisplay() {
+            const display = Object.entries(car)
+                .map(([key, value]) => 
+                    `<span class="property">${key}: ${value}</span>`
+                ).join(' ');
+            document.getElementById('carDisplay').innerHTML = display;
+        }
+
+        function updateProperty() {
+            const prop = document.getElementById('propertyInput').value;
+            const value = document.getElementById('valueInput').value;
+            if (prop && value) {
+                car[prop] = value;
+                updateCarDisplay();
+                document.getElementById('propertyResult').textContent = 
+                    `Updated ${prop} to ${value}`;
+            }
+        }
+
+        function showProperties() {
+            const props = Object.keys(car);
+            document.getElementById('propertyResult').innerHTML = 
+                `Properties: ${props.map(p => 
+                    `<span class="property">${p}</span>`
+                ).join(' ')}`;
+        }
+
+        // School object demo
+        let school = {
+            name: "High School 🏫",
+            classes: {
+                math: { teacher: "Mrs. Smith 📐", students: 25 },
+                science: { teacher: "Mr. Jones 🔬", students: 30 },
+                english: { teacher: "Ms. Brown 📚", students: 28 }
+            }
+        };
+
+        function updateSchoolDisplay() {
+            const display = Object.entries(school.classes)
+                .map(([subject, details]) => 
+                    `<div class="property">${subject}: ${details.teacher} (${details.students} students)</div>`
+                ).join('');
+            document.getElementById('schoolDisplay').innerHTML = display;
+        }
+
+        function updateClass() {
+            const subject = document.getElementById('classSelect').value;
+            const teacher = document.getElementById('teacherInput').value;
+            const students = parseInt(document.getElementById('studentsInput').value);
+            
+            if (teacher && students) {
+                school.classes[subject] = { teacher, students };
+                updateSchoolDisplay();
+                document.getElementById('classResult').textContent = 
+                    `Updated ${subject} class`;
+            }
+        }
+
+        // Initialize displays
+        updateCarDisplay();
+        updateSchoolDisplay();
+    </script>
+</body>
+</html>
