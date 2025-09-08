@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Case Demo</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <script src="../../assets/js/auth.js"></script>
+    <style>
+        /* Base Layout */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Fixed Header */
+        .demo-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel);
+            box-shadow: 0 2px 8px rgba(15,23,36,0.08);
+            z-index: 100;
+            height: 64px; /* Slightly taller header */
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(15,23,36,0.04);
+        }
+        .nav-container {
+            max-width: 900px; /* Wider container */
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .demo-tabs {
+            display: flex;
+            gap: 12px;
+        }
+        .demo-tab {
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .demo-tab.active {
+            background: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(255,213,74,0.2);
+        }
+        .demo-tab:hover:not(.active) {
+            background: rgba(255,213,74,0.1);
+        }
+
+        /* Main Content Area */
+        .container {
+            flex: 1;
+            max-width: 900px; /* Matching header width */
+            margin: 0 auto;
+            padding: 84px 24px 24px; /* Increased padding */
+            overflow-y: auto;
+            position: relative;
+            height: calc(100vh - 64px);
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+        .container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .container::-webkit-scrollbar-thumb {
+            background-color: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* Content Boxes */
+        .demo-box {
+            background: var(--panel);
+            border-radius: 12px; /* Larger radius */
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(15,23,36,0.06);
+            border: 1px solid rgba(15,23,36,0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .demo-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(15,23,36,0.08);
+        }
+        .code {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        .result {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: var(--text);
+        }
+        button {
+            background: var(--accent);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            filter: brightness(1.1);
+        }
+        select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 5px;
+        }
+        
+        /* Tab Content Styles */
+        .tab-content {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content:not(.active) {
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* List Styles */
+        ul {
+            padding-left: 24px;
+            margin: 16px 0;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <nav class="demo-nav">
+        <div class="nav-container">
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="showTab('demo')">Demo</button>
+                <button class="demo-tab" onclick="showTab('code')">Code</button>
+                <button class="demo-tab" onclick="showTab('exercise')">Exercise</button>
+            </div>
+            <a href="../index.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
+                </svg>
+                Back to Menu
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="demo" class="tab-content active">
+            <h1>Switch Case Examples</h1>
+            <p>Learn how to use switch statements for multiple conditions.</p>
+
+            <div class="demo-box">
+            <h2>रोजच्या जीवनातील उदाहरणे (Real Life Examples in Marathi)</h2>
+            
+            <div class="marathi-examples">
+                <h3>1. आठवड्याचे दिवस आणि काय करायचे?</h3>
+                <div class="code">let आजचादिवस = "सोमवार";
+
+switch(आजचादिवस) {
+    case "सोमवार":
+        console.log("शाळेला जायचे 🏫");
+        break;
+    case "रविवार":
+        console.log("सुट्टी आहे! 🎮");
+        break;
+    case "शनिवार":
+        console.log("अर्धा दिवस शाळा 📚");
+        break;
+    default:
+        console.log("नेहमीप्रमाणे शाळा 📝");
+}</div>
+
+                <h3>2. खाऊ काय करायचा?</h3>
+                <div class="code">let वार = "गुरुवार";
+
+switch(वार) {
+    case "सोमवार":
+        console.log("पोहे 🍚");
+        break;
+    case "गुरुवार":
+        console.log("पुरणपोळी 🥮");
+        break;
+    case "रविवार":
+        console.log("बिर्याणी 🍛");
+        break;
+    default:
+        console.log("दाल-भात 🍚");
+}</div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>1. Simple Switch</h2>
+            <div class="code">let day = 1;
+switch(day) {
+    case 1: 
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    default:
+        console.log("Another day");
+}</div>
+            <select id="daySelect">
+                <option value="1">1 - Monday</option>
+                <option value="2">2 - Tuesday</option>
+                <option value="3">3 - Wednesday</option>
+                <option value="4">4 - Thursday</option>
+                <option value="5">5 - Friday</option>
+                <option value="6">6 - Saturday</option>
+                <option value="7">7 - Sunday</option>
+            </select>
+            <button onclick="checkDay()">Check Day</button>
+            <p>Result: <span id="dayResult" class="result">Select a day</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. Grouped Cases</h2>
+            <div class="code">let month = "Jan";
+switch(month) {
+    case "Dec":
+    case "Jan":
+    case "Feb":
+        console.log("Winter");
+        break;
+    case "Mar":
+    case "Apr":
+    case "May":
+        console.log("Spring");
+        break;
+    default:
+        console.log("Another season");
+}</div>
+            <select id="monthSelect">
+                <option value="Jan">January</option>
+                <option value="Feb">February</option>
+                <option value="Mar">March</option>
+                <option value="Apr">April</option>
+                <option value="May">May</option>
+                <option value="Jun">June</option>
+                <option value="Jul">July</option>
+                <option value="Aug">August</option>
+                <option value="Sep">September</option>
+                <option value="Oct">October</option>
+                <option value="Nov">November</option>
+                <option value="Dec">December</option>
+            </select>
+            <button onclick="checkSeason()">Check Season</button>
+            <p>Result: <span id="seasonResult" class="result">Select a month</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. Grade Calculator</h2>
+            <div class="code">let grade = "A";
+switch(grade) {
+    case "A":
+        console.log("Excellent!");
+        break;
+    case "B":
+        console.log("Good job!");
+        break;
+    case "C":
+        console.log("Passed");
+        break;
+    default:
+        console.log("Try again");
+}</div>
+            <select id="gradeSelect">
+                <option value="A">Grade A (90-100)</option>
+                <option value="B">Grade B (80-89)</option>
+                <option value="C">Grade C (70-79)</option>
+                <option value="D">Grade D (60-69)</option>
+                <option value="F">Grade F (Below 60)</option>
+            </select>
+            <button onclick="checkGrade()">Check Grade Message</button>
+            <p>Result: <span id="gradeResult" class="result">Select a grade</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. Traffic Light</h2>
+            <div class="code">let light = "red";
+switch(light) {
+    case "red":
+        console.log("Stop!");
+        break;
+    case "yellow":
+        console.log("Caution!");
+        break;
+    case "green":
+        console.log("Go!");
+        break;
+    default:
+        console.log("Invalid light");
+}</div>
+            <select id="lightSelect">
+                <option value="red">Red Light</option>
+                <option value="yellow">Yellow Light</option>
+                <option value="green">Green Light</option>
+            </select>
+            <button onclick="checkLight()">Check Traffic Light</button>
+            <p>Result: <span id="lightResult" class="result">Select a light</span></p>
+        </div>
+
+        </div>
+
+        <div id="code" class="tab-content" style="display: none;">
+            <h1>Switch Statement Syntax</h1>
+            <div class="demo-box">
+                <h2>Basic Switch Statement Structure</h2>
+                <div class="code">switch(expression) {
+    case value1:
+        // code to execute
+        break;
+    case value2:
+        // code to execute
+        break;
+    default:
+        // code to execute if no case matches
+}</div>
+                <h3>Key Points:</h3>
+                <ul>
+                    <li>The switch expression is evaluated once</li>
+                    <li>Each case value is compared with the expression</li>
+                    <li>If there's a match, the code block is executed</li>
+                    <li>break statements prevent fall-through to next case</li>
+                    <li>default case runs if no case matches</li>
+                </ul>
+            </div>
+
+            <div class="demo-box">
+                <h2>Tips and Best Practices</h2>
+                <ul>
+                    <li>Always use break statements unless fall-through is intended</li>
+                    <li>Group related cases together when they share the same code</li>
+                    <li>Use default case to handle unexpected values</li>
+                    <li>Switch statements can be cleaner than multiple if-else statements</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="exercise" class="tab-content" style="display: none;">
+            <h1>Practice Exercises</h1>
+            
+            <div class="demo-box">
+                <h2>Exercise 1: Day Type Checker</h2>
+                <p>Write a switch statement that takes a day (Monday to Sunday) and outputs whether it's a:</p>
+                <ul>
+                    <li>Weekday (Monday to Friday)</li>
+                    <li>Weekend (Saturday and Sunday)</li>
+                </ul>
+                <div class="code">// Your solution here
+switch(day) {
+    case "Monday":
+    case "Tuesday":
+    case "Wednesday":
+    case "Thursday":
+    case "Friday":
+        console.log("Weekday");
+        break;
+    case "Saturday":
+    case "Sunday":
+        console.log("Weekend");
+        break;
+    default:
+        console.log("Invalid day");
+}</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Exercise 2: Fruit Categories</h2>
+                <p>Create a switch statement that categorizes fruits into:</p>
+                <ul>
+                    <li>Citrus (orange, lemon, lime)</li>
+                    <li>Tropical (mango, pineapple, banana)</li>
+                    <li>Berry (strawberry, blueberry, raspberry)</li>
+                </ul>
+                <div class="code">// Try writing your solution here
+switch(fruit) {
+    case "orange":
+    case "lemon":
+    case "lime":
+        console.log("Citrus fruit");
+        break;
+    case "mango":
+    case "pineapple":
+    case "banana":
+        console.log("Tropical fruit");
+        break;
+    case "strawberry":
+    case "blueberry":
+    case "raspberry":
+        console.log("Berry");
+        break;
+    default:
+        console.log("Unknown fruit type");
+}</div>
+            </div>
+        </div>
+
+        <p class="credit" style="text-align: center; margin-top: 40px; color: var(--muted);">
+            Design and developed by Yogesh Suryawanshi
+        </p>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content and activate the tab
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelector(`.demo-tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        // Simple switch demo
+        function checkDay() {
+            let day = document.getElementById('daySelect').value;
+            let message;
+            
+            switch(parseInt(day)) {
+                case 1: 
+                    message = "It's Monday!";
+                    break;
+                case 2:
+                    message = "It's Tuesday!";
+                    break;
+                case 3:
+                    message = "It's Wednesday!";
+                    break;
+                case 4:
+                    message = "It's Thursday!";
+                    break;
+                case 5:
+                    message = "It's Friday!";
+                    break;
+                case 6:
+                    message = "It's Saturday!";
+                    break;
+                case 7:
+                    message = "It's Sunday!";
+                    break;
+                default:
+                    message = "Invalid day";
+            }
+            document.getElementById('dayResult').textContent = message;
+        }
+
+        // Grouped cases demo
+        function checkSeason() {
+            let month = document.getElementById('monthSelect').value;
+            let season;
+            
+            switch(month) {
+                case "Dec":
+                case "Jan":
+                case "Feb":
+                    season = "Winter ❄️";
+                    break;
+                case "Mar":
+                case "Apr":
+                case "May":
+                    season = "Spring 🌸";
+                    break;
+                case "Jun":
+                case "Jul":
+                case "Aug":
+                    season = "Summer ☀️";
+                    break;
+                case "Sep":
+                case "Oct":
+                case "Nov":
+                    season = "Fall 🍂";
+                    break;
+                default:
+                    season = "Unknown season";
+            }
+            document.getElementById('seasonResult').textContent = 
+                `${month} is in ${season}`;
+        }
+
+        // Grade demo
+        function checkGrade() {
+            let grade = document.getElementById('gradeSelect').value;
+            let message;
+            
+            switch(grade) {
+                case "A":
+                    message = "Excellent! Keep up the great work! 🌟";
+                    break;
+                case "B":
+                    message = "Good job! Very well done! ⭐";
+                    break;
+                case "C":
+                    message = "Passed! Keep practicing! 👍";
+                    break;
+                case "D":
+                    message = "Need improvement. You can do it! 💪";
+                    break;
+                case "F":
+                    message = "Let's try again. Don't give up! 📚";
+                    break;
+                default:
+                    message = "Invalid grade";
+            }
+            document.getElementById('gradeResult').textContent = message;
+        }
+
+        // Traffic light demo
+        function checkLight() {
+            let light = document.getElementById('lightSelect').value;
+            let message;
+            
+            switch(light) {
+                case "red":
+                    message = "🔴 Stop! Wait until it's green";
+                    break;
+                case "yellow":
+                    message = "🟡 Caution! Prepare to stop";
+                    break;
+                case "green":
+                    message = "🟢 Go! Drive safely";
+                    break;
+                default:
+                    message = "Invalid light";
+            }
+            document.getElementById('lightResult').textContent = message;
+        }
+    </script>
+</body>
+</html>

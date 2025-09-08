@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays Demo</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <script src="../../assets/js/auth.js"></script>
+    <style>
+        /* Custom styles specific to arrays demo */
+        .output-box {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            min-height: 40px;
+            border: 1px solid rgba(15,23,36,0.04);
+        }
+        .array-item {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--accent);
+            color: var(--text);
+            border-radius: 6px;
+            margin: 3px;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+        .array-item:hover {
+            transform: translateY(-2px);
+        }
+        .playground {
+            margin: 16px 0;
+            padding: 16px;
+            background: rgba(15,23,36,0.02);
+            border-radius: 8px;
+            border: 1px solid rgba(15,23,36,0.04);
+        }
+        input[type="text"] {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <nav class="demo-nav">
+        <div class="nav-container">
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="showTab('demo')">Demo</button>
+                <button class="demo-tab" onclick="showTab('code')">Code</button>
+                <button class="demo-tab" onclick="showTab('exercise')">Exercise</button>
+            </div>
+            <a href="../index.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
+                </svg>
+                Back to Menu
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="demo" class="tab-content active">
+            <h1>Working with Arrays</h1>
+            <p>Learn how to create and manipulate arrays in JavaScript with these simple examples.</p>
+
+        <div class="demo-box">
+            <h2>1. Basic Array Operations</h2>
+            <div class="code">// Create and modify an array
+let fruits = ['Apple', 'Banana'];
+fruits.push('Orange');     // Add to end
+fruits.unshift('Mango');   // Add to start
+fruits.pop();             // Remove from end
+fruits.shift();           // Remove from start</div>
+            
+            <div class="playground">
+                <input type="text" id="fruitInput" placeholder="Enter a fruit">
+                <button onclick="addToEnd()">Add to End</button>
+                <button onclick="addToStart()">Add to Start</button>
+                <button onclick="removeFromEnd()">Remove Last</button>
+                <button onclick="removeFromStart()">Remove First</button>
+                <div id="arrayResult" class="output-box"></div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. Array Methods (map, filter)</h2>
+            <div class="code">// Transform array items
+let numbers = [1, 2, 3, 4, 5];
+let doubled = numbers.map(n => n * 2);
+let evens = numbers.filter(n => n % 2 === 0);</div>
+            
+            <div class="playground">
+                <div id="numbersDisplay" class="output-box"></div>
+                <button onclick="showDoubled()">Double Numbers</button>
+                <button onclick="showEvens()">Show Even Numbers</button>
+                <button onclick="resetNumbers()">Reset</button>
+                <div id="transformResult" class="output-box"></div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. Finding Items</h2>
+            <div class="code">// Search in array
+let colors = ['red', 'blue', 'green'];
+let found = colors.find(c => c === 'blue');
+let index = colors.indexOf('green');</div>
+            
+            <div class="playground">
+                <div id="colorsDisplay" class="output-box"></div>
+                <input type="text" id="searchInput" placeholder="Search color">
+                <button onclick="findColor()">Find Color</button>
+                <button onclick="findColorIndex()">Find Index</button>
+                <div id="searchResult" class="output-box"></div>
+            </div>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. Sorting and Joining</h2>
+            <div class="code">// Sort and join array items
+let words = ['banana', 'apple', 'orange'];
+words.sort();  // Alphabetical sort
+let text = words.join(', ');</div>
+            
+            <div class="playground">
+                <div id="wordsDisplay" class="output-box"></div>
+                <button onclick="sortArray()">Sort Items</button>
+                <button onclick="joinItems()">Join with Commas</button>
+                <button onclick="shuffleItems()">Shuffle</button>
+                <div id="sortResult" class="output-box"></div>
+            </div>
+        </div>
+
+        </div>
+
+        <div id="code" class="tab-content">
+            <h1>Array Methods and Syntax</h1>
+            <div class="demo-box">
+                <h2>Basic Array Methods</h2>
+                <div class="code">// Creating arrays
+let array = ['item1', 'item2', 'item3'];
+let numbers = [1, 2, 3, 4, 5];
+
+// Adding elements
+array.push('new item');      // Add to end
+array.unshift('first item'); // Add to start
+
+// Removing elements
+array.pop();     // Remove from end
+array.shift();   // Remove from start
+
+// Finding elements
+array.indexOf('item2');     // Get index
+array.includes('item2');    // Check if exists
+array.find(x => x === 'item2'); // Find with condition</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Advanced Array Methods</h2>
+                <div class="code">// Transforming arrays
+let doubled = numbers.map(x => x * 2);
+let evens = numbers.filter(x => x % 2 === 0);
+let sum = numbers.reduce((a, b) => a + b, 0);
+
+// Sorting and reversing
+array.sort();    // Sort alphabetically
+array.reverse(); // Reverse order
+
+// Other useful methods
+array.slice(1, 3);   // Get portion of array
+array.join(', ');    // Join into string
+array.concat([4, 5]); // Combine arrays</div>
+            </div>
+        </div>
+
+        <div id="exercise" class="tab-content">
+            <h1>Practice Exercises</h1>
+            
+            <div class="demo-box">
+                <h2>Exercise 1: Shopping Cart</h2>
+                <p>Create an array-based shopping cart with the following operations:</p>
+                <ul>
+                    <li>Add items to cart</li>
+                    <li>Remove items from cart</li>
+                    <li>Calculate total price</li>
+                </ul>
+                <div class="code">// Your solution here
+let cart = [];
+let prices = {
+    apple: 1,
+    banana: 0.5,
+    orange: 0.75
+};
+
+// Add item to cart
+function addToCart(item) {
+    cart.push(item);
+}
+
+// Remove item from cart
+function removeFromCart(item) {
+    const index = cart.indexOf(item);
+    if (index > -1) {
+        cart.splice(index, 1);
+    }
+}
+
+// Calculate total
+function getTotal() {
+    return cart.reduce((total, item) => {
+        return total + prices[item];
+    }, 0);
+}</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Exercise 2: Array Transformation</h2>
+                <p>Create functions that transform an array of numbers:</p>
+                <ul>
+                    <li>Double all numbers</li>
+                    <li>Keep only even numbers</li>
+                    <li>Calculate the sum</li>
+                </ul>
+                <div class="code">// Your solution here
+const numbers = [1, 2, 3, 4, 5];
+
+// Double all numbers
+const doubled = numbers.map(x => x * 2);
+
+// Keep even numbers
+const evens = numbers.filter(x => x % 2 === 0);
+
+// Calculate sum
+const sum = numbers.reduce((a, b) => a + b, 0);</div>
+            </div>
+        </div>
+
+        <div class="credit">
+            <div class="credit-info">
+                <span class="credit-name">Design and developed by Yogesh Suryawanshi</span>
+                <a href="tel:+919579263798" class="credit-contact">📞 +91 957 926 3798</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content and activate the tab
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelector(`.demo-tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        // Original script content below
+        // Basic array for fruits demo
+        let fruits = ['Apple 🍎', 'Banana 🍌', 'Orange 🍊'];
+        
+        function updateArrayDisplay() {
+            const display = document.getElementById('arrayResult');
+            display.innerHTML = fruits.map(fruit => 
+                `<span class="array-item">${fruit}</span>`
+            ).join(' ');
+        }
+
+        function addToEnd() {
+            const fruit = document.getElementById('fruitInput').value;
+            if (fruit) {
+                fruits.push(fruit);
+                document.getElementById('fruitInput').value = '';
+                updateArrayDisplay();
+            }
+        }
+
+        function addToStart() {
+            const fruit = document.getElementById('fruitInput').value;
+            if (fruit) {
+                fruits.unshift(fruit);
+                document.getElementById('fruitInput').value = '';
+                updateArrayDisplay();
+            }
+        }
+
+        function removeFromEnd() {
+            if (fruits.length > 0) {
+                fruits.pop();
+                updateArrayDisplay();
+            }
+        }
+
+        function removeFromStart() {
+            if (fruits.length > 0) {
+                fruits.shift();
+                updateArrayDisplay();
+            }
+        }
+
+        // Numbers transformation demo
+        let numbers = [1, 2, 3, 4, 5];
+
+        function updateNumbersDisplay() {
+            document.getElementById('numbersDisplay').innerHTML = 
+                numbers.map(n => `<span class="array-item">${n}</span>`).join(' ');
+        }
+
+        function showDoubled() {
+            const doubled = numbers.map(n => n * 2);
+            document.getElementById('transformResult').innerHTML = 
+                doubled.map(n => `<span class="array-item">${n}</span>`).join(' ');
+        }
+
+        function showEvens() {
+            const evens = numbers.filter(n => n % 2 === 0);
+            document.getElementById('transformResult').innerHTML = 
+                evens.map(n => `<span class="array-item">${n}</span>`).join(' ');
+        }
+
+        function resetNumbers() {
+            numbers = [1, 2, 3, 4, 5];
+            updateNumbersDisplay();
+            document.getElementById('transformResult').innerHTML = '';
+        }
+
+        // Colors search demo
+        let colors = ['Red 🔴', 'Blue 🔵', 'Green 🟢', 'Yellow 💛', 'Purple 💜'];
+
+        function updateColorsDisplay() {
+            document.getElementById('colorsDisplay').innerHTML = 
+                colors.map(c => `<span class="array-item">${c}</span>`).join(' ');
+        }
+
+        function findColor() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const found = colors.find(c => c.toLowerCase().includes(search));
+            document.getElementById('searchResult').innerHTML = found ? 
+                `Found: <span class="array-item">${found}</span>` : 
+                'Color not found';
+        }
+
+        function findColorIndex() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const index = colors.findIndex(c => c.toLowerCase().includes(search));
+            document.getElementById('searchResult').innerHTML = index >= 0 ? 
+                `Found at index: <span class="array-item">${index}</span>` : 
+                'Color not found';
+        }
+
+        // Words sorting demo
+        let words = ['Grape 🍇', 'Apple 🍎', 'Orange 🍊', 'Banana 🍌'];
+
+        function updateWordsDisplay() {
+            document.getElementById('wordsDisplay').innerHTML = 
+                words.map(w => `<span class="array-item">${w}</span>`).join(' ');
+        }
+
+        function sortArray() {
+            words.sort();
+            updateWordsDisplay();
+        }
+
+        function joinItems() {
+            document.getElementById('sortResult').textContent = words.join(', ');
+        }
+
+        function shuffleItems() {
+            for (let i = words.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [words[i], words[j]] = [words[j], words[i]];
+            }
+            updateWordsDisplay();
+        }
+
+        // Initialize displays
+        updateArrayDisplay();
+        updateNumbersDisplay();
+        updateColorsDisplay();
+        updateWordsDisplay();
+    </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Selector Demo</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <script src="../../assets/js/auth.js"></script>
+    <style>
+        /* Custom styles specific to selectors demo */
+        .highlight {
+            background: rgba(255, 213, 74, 0.2);
+            outline: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        .box {
+            border: 1px solid rgba(15,23,36,0.1);
+            padding: 12px;
+            margin: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .box:hover {
+            border-color: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(15,23,36,0.05);
+        }
+        .special {
+            color: #e11d48;
+        }
+        .playground {
+            margin: 16px 0;
+            padding: 16px;
+            background: rgba(15,23,36,0.02);
+            border-radius: 8px;
+            border: 1px solid rgba(15,23,36,0.04);
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <nav class="demo-nav">
+        <div class="nav-container">
+            <div class="demo-tabs">
+                <button class="demo-tab active" onclick="showTab('demo')">Demo</button>
+                <button class="demo-tab" onclick="showTab('code')">Code</button>
+                <button class="demo-tab" onclick="showTab('exercise')">Exercise</button>
+            </div>
+            <a href="../index.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 12l6-6M3 12l6 6"/>
+                </svg>
+                Back to Menu
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="demo" class="tab-content active">
+            <h1>Query Selector Examples</h1>
+            <p>Learn how to find and select HTML elements using modern querySelector methods.</p>
+
+        <div class="demo-box">
+            <h2>1. Select by ID</h2>
+            <div class="code">// Select element with id="uniqueId"
+const element = document.querySelector('#uniqueId');</div>
+            
+            <div class="playground">
+                <div id="uniqueId" class="box">
+                    This is a unique element with id="uniqueId"
+                </div>
+                <button onclick="selectById()">Find by ID</button>
+            </div>
+            <p>Result: <span id="idResult" class="result">Click to see!</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>2. Select by Class</h2>
+            <div class="code">// Select all elements with class="special"
+const elements = document.querySelectorAll('.special');</div>
+            
+            <div class="playground">
+                <div class="box special">Special Item 1</div>
+                <div class="box">Normal Item</div>
+                <div class="box special">Special Item 2</div>
+                <button onclick="selectByClass()">Find Special Items</button>
+            </div>
+            <p>Result: <span id="classResult" class="result">Click to see!</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>3. Select by Tag</h2>
+            <div class="code">// Select all paragraph elements
+const paragraphs = document.querySelectorAll('p');</div>
+            
+            <div class="playground">
+                <p class="box">First paragraph</p>
+                <div class="box">This is a div</div>
+                <p class="box">Second paragraph</p>
+                <p class="box">Third paragraph</p>
+                <button onclick="selectByTag()">Find Paragraphs</button>
+            </div>
+            <p>Result: <span id="tagResult" class="result">Click to see!</span></p>
+        </div>
+
+        <div class="demo-box">
+            <h2>4. Complex Selectors</h2>
+            <div class="code">// Select specific nested elements
+const nested = document.querySelector('.parent .child');</div>
+            
+            <div class="playground parent">
+                <div class="box">Parent box
+                    <div class="box child special">Child 1</div>
+                    <div class="box child">Child 2</div>
+                </div>
+                <button onclick="selectComplex()">Find Special Child</button>
+            </div>
+            <p>Result: <span id="complexResult" class="result">Click to see!</span></p>
+        </div>
+
+        </div>
+
+        <div id="code" class="tab-content">
+            <h1>Selector Methods and Syntax</h1>
+            
+            <div class="demo-box">
+                <h2>Basic Selectors</h2>
+                <div class="code">// Select by ID
+const element = document.querySelector('#myId');
+
+// Select by Class
+const elements = document.querySelectorAll('.myClass');
+
+// Select by Tag
+const divs = document.querySelectorAll('div');
+
+// Select by Attribute
+const input = document.querySelector('[type="text"]');</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Complex Selectors</h2>
+                <div class="code">// Descendant Selector
+const nested = document.querySelector('.parent .child');
+
+// Direct Child Selector
+const direct = document.querySelector('.parent > .child');
+
+// Multiple Selectors
+const multiple = document.querySelectorAll('div, span, p');
+
+// Attribute Contains
+const partial = document.querySelector('[class*="part"]');</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Pseudo Selectors</h2>
+                <div class="code">// First Child
+const first = document.querySelector('li:first-child');
+
+// Last Child
+const last = document.querySelector('li:last-child');
+
+// Nth Child
+const nth = document.querySelector('li:nth-child(2)');
+
+// Hover State
+const hover = document.querySelector('.button:hover');</div>
+            </div>
+        </div>
+
+        <div id="code" class="tab-content">
+            <h1>Element Manipulation</h1>
+            
+            <div class="demo-box">
+                <h2>Exercise 1: Element Counter</h2>
+                <p>Create a function that counts different types of elements:</p>
+                <ul>
+                    <li>Count all paragraphs</li>
+                    <li>Count elements with a specific class</li>
+                    <li>Count elements matching a complex selector</li>
+                </ul>
+                <div class="code">// Your solution here
+function countElements() {
+    const paragraphs = document.querySelectorAll('p').length;
+    const specials = document.querySelectorAll('.special').length;
+    const complex = document.querySelectorAll('.parent > .child').length;
+    
+    return {
+        paragraphs,
+        specials,
+        complex
+    };
+}</div>
+            </div>
+
+            <div class="demo-box">
+                <h2>Exercise 2: Element Styler</h2>
+                <p>Create a function that applies styles to selected elements:</p>
+                <ul>
+                    <li>Change background color of specific elements</li>
+                    <li>Add/remove classes based on conditions</li>
+                    <li>Toggle visibility of elements</li>
+                </ul>
+                <div class="code">// Your solution here
+function styleElements() {
+    // Change background of specific elements
+    document.querySelectorAll('.highlight-me').forEach(el => {
+        el.style.backgroundColor = '#ffd74a20';
+    });
+    
+    // Add/remove classes
+    document.querySelectorAll('.toggle-active').forEach(el => {
+        if (el.dataset.active === 'true') {
+            el.classList.add('active');
+        } else {
+            el.classList.remove('active');
+        }
+    });
+    
+    // Toggle visibility
+    document.querySelectorAll('.can-hide').forEach(el => {
+        el.style.display = 
+            el.style.display === 'none' ? 'block' : 'none';
+    });
+}</div>
+            </div>
+        </div>
+
+        <div class="credit">
+            <div class="credit-info">
+                <span class="credit-name">Design and developed by Yogesh Suryawanshi</span>
+                <a href="tel:+919579263798" class="credit-contact">📞 +91 957 926 3798</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.demo-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content and activate the tab
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelector(`.demo-tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        // Original script content below
+        // Remove any existing highlights
+        function clearHighlights() {
+            document.querySelectorAll('.highlight').forEach(el => {
+                el.classList.remove('highlight');
+            });
+        }
+
+        // Select by ID demo
+        function selectById() {
+            clearHighlights();
+            const element = document.querySelector('#uniqueId');
+            element.classList.add('highlight');
+            document.getElementById('idResult').textContent = 
+                'Found element with id="uniqueId"';
+        }
+
+        // Select by class demo
+        function selectByClass() {
+            clearHighlights();
+            const elements = document.querySelectorAll('.special');
+            elements.forEach(el => el.classList.add('highlight'));
+            document.getElementById('classResult').textContent = 
+                `Found ${elements.length} elements with class="special"`;
+        }
+
+        // Select by tag demo
+        function selectByTag() {
+            clearHighlights();
+            const paragraphs = document.querySelectorAll('.playground p');
+            paragraphs.forEach(el => el.classList.add('highlight'));
+            document.getElementById('tagResult').textContent = 
+                `Found ${paragraphs.length} paragraph elements`;
+        }
+
+        // Complex selector demo
+        function selectComplex() {
+            clearHighlights();
+            const element = document.querySelector('.parent .child.special');
+            element.classList.add('highlight');
+            document.getElementById('complexResult').textContent = 
+                'Found the special child element';
+        }
+    </script>
+</body>
+</html>

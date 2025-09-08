@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables Demo</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <script src="../../assets/js/auth.js"></script>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <div class="container">
+        <h1>Variables in JavaScript</h1>
+        
+        <!-- Simple score counter demo -->
+        <div class="demo-box">
+            <h2>Score Counter</h2>
+            <p>Click buttons to see how different variables work!</p>
+            
+            <div class="score-display">
+                Score: <span id="score">0</span>
+            </div>
+            
+            <div class="controls">
+                <button onclick="addPoints()">Add 10 Points</button>
+                <button onclick="resetScore()">Reset Score</button>
+            </div>
+
+            <div class="explanation">
+                <h3>What's happening?</h3>
+                <ul>
+                    <li><code>let score</code> - Can be changed (we update it)</li>
+                    <li><code>const maxPoints</code> - Cannot be changed (always 100)</li>
+                    <li><code>var oldScore</code> - Old way, similar to let</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <p class="credit">Design and developed by Yogesh Suryawanshi</p>
+    <script src="script.js"></script>
+</body>
+</html>

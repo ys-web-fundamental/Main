@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TechYogi Learning Hub</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
+    <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg), var(--panel));
+        }
+        .login-box {
+            background: var(--panel);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(15,23,36,0.15);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        .login-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .login-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-title h1 {
+            margin: 0 0 10px;
+            font-size: 28px;
+        }
+        .login-title p {
+            margin: 0;
+            color: var(--muted);
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(15,23,36,0.1);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: var(--bg);
+            color: var(--text);
+        }
+        .input-group input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255,213,74,0.2);
+            outline: none;
+        }
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            border: none;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,213,74,0.3);
+        }
+        .error-message {
+            color: #e11d48;
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            min-height: 20px;
+        }
+        .login-decoration {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.1;
+            z-index: -1;
+        }
+        .decoration-1 {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            right: -50px;
+        }
+        .decoration-2 {
+            width: 150px;
+            height: 150px;
+            bottom: -75px;
+            left: -75px;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-decoration decoration-1"></div>
+            <div class="login-decoration decoration-2"></div>
+            
+            <div class="login-title">
+                <h1>Welcome Back!</h1>
+                <p>Login to access TechYogi Learning Hub</p>
+            </div>
+            
+            <form id="loginForm" onsubmit="return handleLogin(event)">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="Enter username" autocomplete="username">
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Enter password" autocomplete="current-password">
+                </div>
+                
+                <button type="submit" class="login-button">Login</button>
+                <div class="error-message" id="errorMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('errorMessage');
+            
+            // Check credentials
+            if (username === 'student' && password === 'student') {
+                // Store authentication state
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('username', username);
+                
+                // Redirect to js-demos page
+                window.location.href = 'js-demos/index.html';
+            } else {
+                errorElement.textContent = 'Invalid username or password';
+                // Shake animation on error
+                const loginBox = document.querySelector('.login-box');
+                loginBox.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    loginBox.style.animation = '';
+                }, 500);
+            }
+            
+            return false;
+        }
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Check if already logged in
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            window.location.href = 'js-demos/index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,55 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Css Study</title>
-    <style>
-
-    </style>
-
-</head>
-<body>   
-
-<p class="text-change">Addition!</p> <br>
-<p id="addition"></p><br> 
-<p id="varaddition"></p>
-
-<button type="button" onclick='addition()'>Addition</button>
-</body>
-<script>
-
-
-
-    function addition(){
-        var yenarka = 'no';
-        if(yenarka == 'yes'){
-            let x,y,z;
-                x = 80;
-                y = 500;
-                z = x + y;
-                document.getElementById('addition').innerHTML = z;
-        }
-
-
-        var varaddition = 1;
-        if(varaddition){
-                var a,b,D;
-                a = 55;
-                b = 60;
-                D = a + b;
-                
-        }
-document.getElementById('varaddition').innerHTML = D;
-
-        const  l = 45, m= 78 , n= 0;
-        D = l + m;
-
-
-       // 
-
-        //document.getElementById('addition').innerHTML = n;
-
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bulb On / Off — Vanilla JS</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="./assets/js/auth.js"></script>
+  <style>
+    .main-nav {
+      background: var(--panel);
+      padding: 12px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(15,23,36,0.08);
     }
-</script>
+    .nav-links {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .nav-link:hover {
+      background: var(--accent);
+    }
+    .nav-link.active {
+      background: var(--accent);
+    }
+    /* Add padding to main content to account for fixed nav */
+    .page {
+      padding-top: 60px;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="watermark-container">
+        <div class="watermark-text watermark-1">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-2">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-3">© Yogesh Suryawanshi</div>
+        <div class="watermark-text watermark-4">© Yogesh Suryawanshi</div>
+    </div>
+    <nav class="main-nav">
+      <div class="nav-links">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="js-demos/index.html" class="nav-link">Revise the Concept</a>
+      </div>
+    </nav>
+    <main class="page">
+      <h1>Bulb On / Off</h1>
+
+      <section class="demo">
+        <div class="bulb" id="bulb" aria-live="polite" aria-pressed="false" role="img" aria-label="Light bulb off"></div>
+        <div class="controls">
+          <button id="toggleBtn" class="btn" aria-controls="bulb">Turn On</button>
+          <button id="flashBtn" class="btn secondary">Flash</button>
+        </div>
+        <p class="hint">Tip: press <kbd>Space</kbd> to toggle the bulb.</p>
+      </section>
+      <footer>
+        <p>Simple demo using plain HTML, CSS and JavaScript. No frameworks.</p>
+        <p class="credit">Design and developed by Yogesh Suryawanshi</p>
+      </footer>
+    </main>
+
+  <script src="./assets/js/bulbprj.js" defer></script>
+  </body>
 </html>

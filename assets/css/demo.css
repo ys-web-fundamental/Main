@@ -1,0 +1,422 @@
+/* Watermarks */
+.watermark-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.watermark-text {
+    position: fixed;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text);
+    opacity: 0.025;
+    white-space: nowrap;
+    transform: rotate(-45deg);
+    right: -50px;
+}
+
+.watermark-1 { top: 10%; }
+.watermark-2 { top: 35%; }
+.watermark-3 { top: 60%; }
+.watermark-4 { top: 85%; }
+
+/* Base Layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fixed Header */
+.demo-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    box-shadow: 0 2px 8px rgba(15,23,36,0.08);
+    z-index: 100;
+    height: 64px;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(15,23,36,0.04);
+}
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.demo-tabs {
+    display: flex;
+    gap: 12px;
+}
+.demo-tab {
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.demo-tab.active {
+    background: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(74,158,255,0.2);
+}
+.demo-tab:hover:not(.active) {
+    background: rgba(74,158,255,0.1);
+}
+
+/* Main Content Area */
+.container {
+    flex: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 84px 24px 24px;
+    overflow-y: auto;
+    position: relative;
+    height: calc(100vh - 64px);
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 4px;
+}
+
+/* Content Sections */
+.tab-content, .content-section {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.tab-content.active, .content-section.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Demo Boxes */
+.demo-box {
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(15,23,36,0.06);
+    border: 1px solid rgba(15,23,36,0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.demo-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(15,23,36,0.08);
+}
+
+/* Code Blocks */
+.code {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    margin: 16px 0;
+    white-space: pre-wrap;
+    border: 1px solid rgba(15,23,36,0.04);
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: inset 0 1px 4px rgba(15,23,36,0.04);
+}
+
+/* Results and Outputs */
+.result {
+    color: var(--accent);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: rgba(255,213,74,0.1);
+    display: inline-block;
+    margin: 8px 0;
+}
+
+/* Navigation Elements */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.back-link:hover {
+    color: var(--text);
+    transform: translateX(-2px);
+}
+
+/* Buttons and Interactive Elements */
+button {
+    background: var(--accent);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 8px 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    color: var(--text);
+}
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(255,213,74,0.2);
+    filter: brightness(1.05);
+}
+
+/* Form Elements */
+select, input {
+    padding: 8px 12px;
+    border: 1px solid rgba(15,23,36,0.1);
+    border-radius: 6px;
+    margin: 4px;
+    font-size: 14px;
+}
+select:focus, input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255,213,74,0.2);
+}
+
+/* Marathi Examples */
+.marathi-examples {
+    background: linear-gradient(to right bottom, #f8fafc, #f1f5f9);
+    padding: 24px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 1px solid rgba(15,23,36,0.04);
+}
+.marathi-examples h3 {
+    color: var(--text);
+    margin: 20px 0 12px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.marathi-examples h3::before {
+    content: "🔹";
+    font-size: 1.2em;
+}
+.marathi-examples p {
+    color: var(--muted);
+    margin: 8px 0 16px;
+    line-height: 1.6;
+}
+
+/* Lists */
+ul {
+    padding-left: 24px;
+    margin: 16px 0;
+}
+li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+/* Typography */
+h1 {
+    margin: 0 0 16px;
+    font-size: 2em;
+}
+h2 {
+    margin: 24px 0 16px;
+    font-size: 1.5em;
+}
+h3 {
+    margin: 20px 0 12px;
+    font-size: 1.2em;
+}
+p {
+    margin: 0 0 16px;
+    line-height: 1.6;
+}
+
+/* Watermarks */
+.container {
+    position: relative;
+}
+
+/* Multiple watermarks using pseudo-elements */
+.container::before,
+.container::after {
+    content: "© Yogesh Suryawanshi";
+    position: fixed;
+    font-size: 48px;
+    font-weight: 900;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: -1;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, 
+        rgba(255,213,74,0.5), 
+        rgba(255,213,74,0.2)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(15,23,36,0.2);
+    animation: watermarkPulse 4s ease-in-out infinite;
+}
+
+@keyframes watermarkPulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+}
+
+/* Watermark styles for both methods */
+.container::before,
+.container::after,
+.demo-box:first-of-type::before,
+.demo-box:last-of-type::after,
+.watermark-text {
+    content: "© Yogesh Suryawanshi";
+    position: fixed;
+    font-size: 48px;
+    font-weight: 900;
+    transform: rotate(-45deg) scale(1.2);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: -1;
+    background: linear-gradient(45deg, 
+        rgba(74,158,255,0.5), 
+        rgba(74,158,255,0.2)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(15,23,36,0.2);
+    animation: watermarkPulse 4s ease-in-out infinite;
+}
+
+/* Positioning for pseudo-element method */
+.container::before {
+    top: 25%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.container::after {
+    top: 55%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+.demo-box:first-of-type::before {
+    bottom: 25%;
+    left: 15%;
+    animation-delay: 2s;
+}
+
+.demo-box:last-of-type::after {
+    top: 75%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+/* Positioning for div method */
+.watermark-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.watermark-text {
+    position: absolute;
+}
+
+.watermark-1 {
+    top: 25%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.watermark-2 {
+    top: 55%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+.watermark-3 {
+    bottom: 25%;
+    left: 15%;
+    animation-delay: 2s;
+}
+
+.watermark-4 {
+    top: 75%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+/* Credit Line */
+.credit {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: var(--muted);
+    border-top: 1px solid rgba(15,23,36,0.04);
+    background: var(--panel);
+}
+.credit-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.credit-name {
+    font-weight: 500;
+    color: var(--text);
+}
+.credit-contact {
+    font-size: 0.9em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.credit-contact:hover {
+    color: var(--text);
+}
+
+/* Exercise Section */
+.exercise-box {
+    margin: 24px 0;
+    padding: 20px;
+    background: rgba(15,23,36,0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(15,23,36,0.04);
+}
